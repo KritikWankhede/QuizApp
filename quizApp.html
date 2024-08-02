@@ -1,0 +1,55 @@
+<template>
+    <lightning-card title="Let's Play The Game.">
+        <!-- <div>
+            The {correctAnswer} are correct out of {ls}
+        </div> -->
+        <div class="slds-m-around_medium">
+            <form>
+            <!-- <template for:each={myQuestions} for:item="quest">
+                <div key={quest.id}>
+                    <div>
+                        <strong>
+                            {quest.id} {quest.question}
+                        </strong>
+                        <div class="options-grid">
+                            <template for:each={quest.options} for:item="option" for:index="index">
+                                <div key={index.} class="option">
+                                    <input type="radio" name={question.id} value={index} />
+                                    <label>{option}</label>
+                                </div>
+                            </template>
+                        </div>
+                    </div>
+
+                     <div>
+                        <strong>
+                            {quest.option1} {quest.option2} {quest.option3}
+                        </strong>
+                    </div>
+                </div>
+            </template> -->
+            <template for:each={myQuestions} for:item="question">
+                <div key={question.id}  class="slds-m-bottom_medium">
+                    <p><strong>{question.id}. {question.question}</strong></p>
+                    <div class="options-grid">
+                        <template for:each={question.options} for:item="option" for:index="index">
+                            <div key={option} class="option">
+                                <input type="radio" name={question.id} value={index} onchange={onChangeHandler}/>
+                                <label>{option}</label>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </template>
+            <lightning-button variant="brand" label="Submit" disabled={selectionCheck}
+                type='Submit' class="slds-m-around_small" 
+                title="Submit Quiz" onclick={submitHandler}>
+            </lightning-button>
+            <lightning-button variant="brand" label="Reset" 
+                type='Reset' class="slds-m-around_small" 
+                title="Reset Quiz" onclick={resetHandler}>
+            </lightning-button>
+        </form>
+        </div>
+    </lightning-card>
+</template>
